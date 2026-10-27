@@ -1,0 +1,20 @@
+%{
+#include <stdio.h>
+int count = 0;
+%}
+
+%%
+"sec-B" {count++;}
+.|\n {ECHO;}
+%%
+
+int main(){
+    printf("Enter a Statement: ");
+    yylex();
+    printf("Occurence: %d", count);
+    return 0;
+}
+
+int yywrap(){
+    return 1;
+}
